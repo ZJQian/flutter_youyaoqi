@@ -42,7 +42,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
   }
 
   getDetectList() async {
-    await request(detectList).then((val){
+    await get(detectList).then((val){
       DiscoverModel model = DiscoverModel.fromJson(val["data"]);
       setState(() {
         bannerList = model.returnData.galleryItems;

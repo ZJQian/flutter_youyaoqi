@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../config/colors_config.dart';
 import '../config/service_url.dart';
 import '../service/service_method.dart';
+import 'dart:convert';
 
 class UpdatePage extends StatefulWidget {
   @override
@@ -22,8 +23,8 @@ class _UpdatePageState extends State<UpdatePage> {
   }
 
   _getTodayRecommendList() async {
-    await request(todayRecommendList, formData: {"page": 0, "day": 4})
-        .then((val) {
+    await get(todayRecommendList, formData: {"page": 0, "day": 4}).then((val) {
+
       ComicModel comicModel = ComicModel.fromJson(val["data"]);
       setState(() {
         comicList = comicModel.returnData.comics;
